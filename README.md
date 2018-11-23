@@ -1,5 +1,9 @@
 # PwnedPass
 
+[![Godoc](https://godoc.org/github.com/fharding1/pwnedpass?status.svg)](http://godoc.org/github.com/fharding1/pwnedpass)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![CI: CircleCI](https://circleci.com/gh/fharding1/pwnedpass.svg?style=svg)](https://circleci.com/gh/fharding1/pwnedpass)
+
 PwnedPass is a Go library for accessing the [Pwned Password
 API](https://haveibeenpwned.com/API/v2). It currently only supports the V2
 version of the API. It's got a dead simple API, tests, and benchmarks.
