@@ -154,6 +154,10 @@ func BenchmarkCount(b *testing.B) {
 	}
 }
 
+// BenchmarkCountIntegration hits the actual Pwned Password API. While there are
+// no rate limits strictly enforced by the Pwned Password API, you probably
+// shouldn't spam this benchmark. You can use BenchmarkCount if you just want
+// to test the library against a local mock server.
 func BenchmarkCountIntegration(b *testing.B) {
 	for i := 0; i < b.N; i++ {
 		DefaultClient.Count("password")
