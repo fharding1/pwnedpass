@@ -19,7 +19,7 @@ type ClientV2 struct {
 	BaseURL    string
 }
 
-// BaseURLV2 is the base pwnedpasswords URL for the V2 API.
+// BaseURLV2 is the base URL for the V2 Pwned Passwords API.
 const BaseURLV2 = "https://api.pwnedpasswords.com"
 
 // DefaultClient is the default client used for making requests to the PwnedPass
