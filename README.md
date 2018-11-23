@@ -1,4 +1,4 @@
-# PwnedPasss
+# PwnedPass
 
 PwnedPass is a Go library for accessing the [Pwned Password
 API](https://haveibeenpwned.com/API/v2). It currently only supports the V2
