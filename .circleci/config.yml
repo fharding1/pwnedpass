@@ -1,0 +1,13 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/golang:1.11
+
+    working_directory: /go/src/github.com/fharding1/pwnedpass
+    steps:
+      - checkout
+      - run: go get -u golang.org/x/lint/golint
+      - run: go get -t ./...
+      - run: golint
+      - run: go test -v
