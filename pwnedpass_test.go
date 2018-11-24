@@ -59,17 +59,6 @@ func TestClientV2Count(t *testing.T) {
 			expectError:   false,
 		},
 		{
-			name: "password hash exists in response and has count of 12",
-			handler: func(w http.ResponseWriter, r *http.Request) {
-				fmt.Fprintln(w, "0018A45C4D1DEF81644B54AB7F969B88D65:4")
-				fmt.Fprintln(w, "7B5EA3F0FDBC95D0DD47F3C5BC275DA8A33:12")
-				fmt.Fprintln(w, "00D4F6E8FA6EECAD2A3AA415EEC418D38EC:9")
-			},
-			password:      "foo",
-			expectedCount: 12,
-			expectError:   false,
-		},
-		{
 			name: "password hash exists in lowercase results",
 			handler: func(w http.ResponseWriter, r *http.Request) {
 				fmt.Fprintln(w, "0018a45c4d1def81644b54ab7f969b88d65:4")
