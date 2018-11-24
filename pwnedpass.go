@@ -78,7 +78,7 @@ func (c *ClientV2) Count(password string) (int, error) {
 		}
 	}
 
-	return 0, nil
+	return 0, scanner.Err()
 }
 
 func (c *ClientV2) httpClient() *http.Client {
