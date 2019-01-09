@@ -2,6 +2,7 @@ package pwnedpass
 
 import (
 	"bufio"
+	"context"
 	"crypto/sha1"
 	"encoding/hex"
 	"fmt"
@@ -32,17 +33,18 @@ var DefaultClient = &ClientV2{
 }
 
 const (
-	errUnableToWrite     = "unable to write password to sha1 hash.Hash"
-	errShortHash         = "hex encoded hash is too short"
-	errMakingHTTPRequest = "got error making http request"
-	errParsingCount      = "error parsing count"
+	errUnableToWrite       = "unable to write password to sha1 hash.Hash"
+	errShortHash           = "hex encoded hash is too short"
+	errCreatingHTTPRequest = "got error creating http request"
+	errMakingHTTPRequest   = "got error making http request"
+	errParsingCount        = "error parsing count"
 )
 
 // Count returns the numbers of passwords associated with a given password.
 // Count will use http.DefaultClient if the Client HTTPClient is nil and it will
 // use BaseURLV2 if the Client BaseURL is empty. This means ClientV2 has a
 // usable zero value.
-func (c *ClientV2) Count(password string) (int, error) {
+func (c *ClientV2) Count(ctx context.Context, password string) (int, error) {
 	h := sha1.New()
 	if _, err := h.Write([]byte(password)); err != nil {
 		return 0, errors.Wrap(err, errUnableToWrite)
@@ -57,7 +59,13 @@ func (c *ClientV2) Count(password string) (int, error) {
 
 	url := fmt.Sprintf("%s/range/%s", c.baseURL(), prefix)
 
-	resp, err := c.httpClient().Get(url)
+	req, err := http.NewRequest(http.MethodGet, url, nil)
+	if err != nil {
+		return 0, errors.Wrap(err, errCreatingHTTPRequest)
+	}
+	req = req.WithContext(ctx)
+
+	resp, err := c.httpClient().Do(req)
 	if err != nil {
 		return 0, errors.Wrap(err, errMakingHTTPRequest)
 	}

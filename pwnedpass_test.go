@@ -1,6 +1,7 @@
 package pwnedpass
 
 import (
+	"context"
 	"fmt"
 	"net/http"
 	"net/http/httptest"
@@ -120,7 +121,7 @@ func TestClientV2Count(t *testing.T) {
 		t.Logf("test case %d: %s", i, tt.name)
 		mockHandler = tt.handler
 
-		count, err := client.Count(tt.password)
+		count, err := client.Count(context.TODO(), tt.password)
 		assert.Equal(t, tt.expectError, err != nil)
 		assert.Equal(t, tt.expectedCount, count)
 	}
@@ -139,7 +140,7 @@ func BenchmarkCount(b *testing.B) {
 
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
-		client.Count("password")
+		client.Count(context.TODO(), "password")
 	}
 }
 
@@ -149,6 +150,6 @@ func BenchmarkCount(b *testing.B) {
 // to test the library against a local mock server.
 func BenchmarkCountIntegration(b *testing.B) {
 	for i := 0; i < b.N; i++ {
-		DefaultClient.Count("password")
+		DefaultClient.Count(context.TODO(), "password")
 	}
 }
