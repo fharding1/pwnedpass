@@ -14,6 +14,12 @@ import (
 	"github.com/pkg/errors"
 )
 
+// Client describes an interface for interacting with the PwnedPasswords
+// API to get password breach occurence counts.
+type Client interface {
+	Count(ctx context.Context, password string) (int, error)
+}
+
 // ClientV2 is used for making requests to the PwnedPass V2 API.
 type ClientV2 struct {
 	HTTPClient *http.Client
@@ -26,7 +32,7 @@ const BaseURLV2 = "https://api.pwnedpasswords.com"
 // DefaultClient is the default client used for making requests to the PwnedPass
 // API. It uses the V2 client with the https://api.pwnedpasswords.com base URL.
 // It has a sane timeout of 5 seconds.
-var DefaultClient = &ClientV2{
+var DefaultClient Client = &ClientV2{
 	HTTPClient: &http.Client{
 		Timeout: time.Second * 5,
 	},
