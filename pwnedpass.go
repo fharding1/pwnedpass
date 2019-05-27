@@ -38,6 +38,12 @@ var DefaultClient Client = &ClientV2{
 	},
 }
 
+// Count uses DefaultClient to count the number of password returned from the
+// PwnedPass API.
+func Count(ctx context.Context, password string) (int, error) {
+	return DefaultClient.Count(ctx, password)
+}
+
 const (
 	errUnableToWrite       = "unable to write password to sha1 hash.Hash"
 	errShortHash           = "hex encoded hash is too short"

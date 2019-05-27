@@ -150,6 +150,6 @@ func BenchmarkCount(b *testing.B) {
 // to test the library against a local mock server.
 func BenchmarkCountIntegration(b *testing.B) {
 	for i := 0; i < b.N; i++ {
-		DefaultClient.Count(context.TODO(), "password")
+		Count(context.TODO(), "password")
 	}
 }
