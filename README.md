@@ -13,6 +13,26 @@ version of the API. It's got a dead simple API, tests, and benchmarks.
 See [godoc](https://godoc.org/github.com/fharding1/pwnedpass) for usage and
 documentation.
 
+## CLI
+
+To install the CLI tool from the latest source run:
+
+```
+go install github.com/fharding1/pwnedpass/cmd/pwnedpass
+```
+
+Otherwise, you can visit the [releases](https://github.com/fharding1/pwnedpass/releases)
+to download the binary of a release to use.
+
+### Usage
+
+Using the CLI tool is fairly simple:
+
+```
+pwnedpass password
+pwnedpass "a password with spaces"
+```
+
 ## Performance
 
 Running on my computer, the benchmark results I get are:
