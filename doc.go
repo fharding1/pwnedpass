@@ -1,7 +1,7 @@
 // Package pwnedpass provides a library for accessing the Pwned Password API.
 //
 // Usage:
-// 	count, err := pwnedpass.DefaultClient.Count("password")
+// 	count, err := pwnedpass.Count("password")
 // 	if err != nil {
 // 		panic(err)
 // 	}
