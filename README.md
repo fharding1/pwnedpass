@@ -15,14 +15,13 @@ documentation.
 
 ## CLI
 
-To install the CLI tool from the latest source run:
+You can visit [releases](https://github.com/fharding1/pwnedpass/releases)
+to download a stable version of the CLI tool, or you can install from the
+latest source with:
 
 ```
 go install github.com/fharding1/pwnedpass/cmd/pwnedpass
 ```
-
-Otherwise, you can visit the [releases](https://github.com/fharding1/pwnedpass/releases)
-to download the binary of a release to use.
 
 ### Usage
 
