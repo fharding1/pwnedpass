@@ -20,7 +20,7 @@ to download a stable version of the CLI tool, or you can install from the
 latest source with:
 
 ```
-go install github.com/fharding1/pwnedpass/cmd/pwnedpass
+go get github.com/fharding1/pwnedpass/cmd/pwnedpass
 ```
 
 ### Usage
